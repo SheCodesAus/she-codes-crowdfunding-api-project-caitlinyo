@@ -6,7 +6,7 @@ class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     goal = models.IntegerField()
-    image = models.BooleanField()
+    image = models.URLField()
     date_created = models.DateTimeField()
     owner = models.CharField(max_length=200)
-    
+    is_open = models.BooleanField()
