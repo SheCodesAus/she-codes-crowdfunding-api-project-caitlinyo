@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from tkinter import CASCADE
 from django.db import models
 
@@ -8,9 +9,14 @@ class Project(models.Model):
     description = models.TextField()
     goal = models.IntegerField()
     image = models.URLField()
-    date_created = models.DateTimeField()
-    owner = models.CharField(max_length=200)
     is_open = models.BooleanField()
+    date_created = models.DateTimeField()
+    # owner = models.CharField(max_length=200)
+    owner = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+        related_name='owner_projects'
+    )
 
 class Pledge(models.Model):
     amount = models.IntegerField()
